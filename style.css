@@ -1,0 +1,379 @@
+@font-face{
+  font-family: Davinci;
+  src: url(/Assets/Fonts/cm-davinci-fonts-modern-sans-3701241/Davinci.ttf);
+}
+
+@font-face {
+  font-family: Samsung;
+  src: url(Assets/Fonts/samsung-logo/@font-face/8915f60fd14a7688bcae6a457be3bd08.woff2);
+}
+
+@font-face {
+  font-family: Abnes;
+  src: url(Assets/Fonts/abnes/abnes.ttf);
+}
+
+* {
+  margin : 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.bg-img-home {
+  background-image: url('Assets/Images/home.png');
+  height: 92vh;
+  width: 100%;
+  background-size: cover;
+  background-position: top 0% right 0%;
+  background-repeat: no-repeat;
+  z-index: 1;
+}
+
+.bg-img-text-home {
+  font-family: "Davinci", "sans-serif";
+  font-size: 9vh;
+  display: flex;
+  justify-content: center;
+  padding-top: 17vh;
+  z-index: 1;
+}
+
+nav {
+  background: #333333;
+  box-shadow: 0px 2px 10px rgba(0, 0, 0, 1);
+  position: fixed;
+  width: 100%;
+  z-index: 9999;
+  
+  /* to make sticky navbar */
+  position: sticky;
+  top: 0;
+  left: 0;
+}
+
+.nav-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 10px 45px;
+  padding: 15px 0px;
+}
+
+.logo {
+  color: #aeaeae;
+  text-decoration: none;
+  font-family: "Abnes", "sans-serif";
+  font-size: 33px;
+  font-weight: 600;
+  text-transform: uppercase;
+  transition: transform .3s;
+}
+
+.logo:hover {
+  color: #a69a85;
+  transition: transform .3s;
+  transform: scale(1.1);
+}
+
+.nav-elements {
+  color: #000000;
+  font-size: 25px;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.nav-elements:hover {
+  color: #a69a85;
+}
+
+.profile_icon {
+  margin: 0 20px;
+  transition: transform .3s;
+}
+
+.profile_icon:hover {
+  cursor: pointer;
+  filter: drop-shadow(.4rem .4rem .9rem #000);
+  transition: transform .3s;
+  transform: scale(1.5);
+}
+
+.dropdown {
+  display: none;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background-color: #333333;
+  z-index: 9999;
+}
+
+.profile_icon:hover .dropdown {
+  display: block;
+}
+
+.dropdown-ul {
+  font-family: "Samsung", "sans-serif";
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+.dropdown-li {
+  margin: 0 20px;
+  transition: transform .3s;
+}
+
+.dropdown-li:hover {
+  transition: transform .3s;
+  transform: scale(1.5);
+}
+
+.dropdown a {
+  font-family: "Samsung", "sans-serif";
+  font-weight: 400;
+  font-size: 70%;
+  display: block;
+  padding: 8px;
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.dropdown a:hover {
+  color: #a69a85;
+  transition: transform .3s;
+}
+
+.wrapper {
+  display: flex;
+  justify-content: center; 
+  align-items: center;
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+  width: 400px;
+  height: 440px;
+  background: transparent;
+  border: 2px solid rgba(166, 154, 133, .5);
+  border-radius: 20px;
+  backdrop-filter: blur(20px) brightness(58%);
+  z-index: 9998;
+  box-shadow: 0 0 30px rgba(0, 0, 0, .5);
+  overflow: hidden;
+  transform: scale(0);
+  transition: transform .5s ease, height .3s ease;
+}
+
+.wrapper.active-register {
+  height: 550px;
+}
+
+.wrapper.active-loginpopup {
+  transform: scale(1);
+}
+
+.wrapper.active-registerpopup {
+  transform: scale(1);
+}
+
+.form-box {
+  width: 100%;
+  margin: 10px;
+}
+
+.form-boxlogin.inactive {
+  display: none;
+  transition: transform .28s ease;
+  transform: translateX(-400px);
+}
+
+.form-boxlogin .active-login{
+  position: absolute;
+  transition: none;
+  transform: translateX(0px);
+}
+
+.form-boxregister.inactive {
+  display: none;
+  transition: transform .28s ease;
+  transform: translateX(400px);
+}
+
+.form-boxregister.active-register{
+  position: absolute;
+  transition: transform .28s ease;
+  transform: translateX(0px);
+}
+
+.wrapper .icon-close {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 45px;
+  height: 45px;
+  background: #a88d5d;
+  filter: brightness(70%);
+  font-size: 2em;
+  color: #000000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom-left-radius: 20px;
+  cursor: pointer;
+  z-index: 9998;
+}
+
+.wrapper .icon-close:hover {
+  color: #dcd0ff;
+  transition: transform .3s;
+}
+
+
+.form-boxlogin h2 {
+  font-size: 2em;
+  color: #e99b09;
+  text-align: center;
+}
+
+.form-boxregister h2 {
+  font-size: 2em;
+  color: #e99b09;
+  text-align: center;
+}
+
+.input-box {
+  position: relative;
+  width: 100%;
+  height: 50px;
+  border-bottom: 3px solid #282e2e;
+  margin: 30px 0;
+}
+
+.input-box label {
+  position: absolute;
+  top: 50%;
+  left: 5px;
+  transform: translateY(-50%);
+  font-size: 1.4em;
+  color: #a88d5d;
+  font-weight: 500;
+  pointer-events: none;
+  transition: .5s;
+}
+
+.input-box input:focus~label, .input-box input:valid~label{
+  top: -5px;
+}
+
+.input-box input {
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  border: none;
+  outline: none;
+  font-size: 1em;
+  color: #e99b09;
+  font-weight: 600;
+  padding: 0 35px 0 5px;
+}
+
+.input-box .icon {
+  position: absolute;
+  right: 8px;
+  font-size: 1.3em;
+  color: #a88d5d;
+  margin-top: 20px;
+}
+
+.btn {
+  width: 100%;
+  height: 45px;
+  background: #a88d5d;
+  filter: brightness(80%);
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1em;
+  color: #000000;
+  font-weight: 500;
+}
+
+.btn:hover {
+  color: #dcd0ff;
+  transition: transform .3s;
+}
+
+.login-register {
+  font-size: .9em;
+  color: #000000;
+  text-align: center;
+  font-weight: 500;
+  margin: 25px 0 10px
+}
+
+.login-register p {
+  font-size: 1.25em;
+  color: #a88d5d;
+  text-decoration: none;
+}
+
+.login-register p a {
+  color: #e99b09;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.login-register p a:hover{
+  text-decoration: underline;
+}
+
+/* Custom Scrollbar */
+
+html::-webkit-scrollbar {
+  width: 0.69vw;
+  background-color: #000000;
+}
+
+html::-webkit-scrollbar-track {
+  background-color: #000000;
+  margin-block: 0.5rem;
+  border-radius: 100vw;
+}
+
+html::-webkit-scrollbar-thumb {
+  background-color: #000000;
+  border: 0.5vw solid #a69a85;
+  border-radius: 100vw;
+}
+
+html::-webkit-scrollbar-thumb:hover {
+  background-color: #a69a85;
+  border-color: #aeaeae;
+}
+
+/* Scrollbar customisatin for Firefox and non-webkit based browsers */
+html {
+  scrollbar-width: thin;
+  scrollbar-color: #a69a85 #000000;
+}
+
+
+@media (max-width: 768px) {
+  .nav-container {
+    flex-direction: column;
+  }
+
+  .logo {
+    margin-bottom: 20px;
+  }
+
+  li {
+    margin: 10px 0;
+  }
+}
