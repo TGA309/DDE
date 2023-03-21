@@ -6,7 +6,6 @@ const formBoxRegister = document.querySelector('.form-boxregister');
 const btnPopupLogin = document.querySelector('.btnLogin-popup');
 const btnPopupRegister = document.querySelector('.btnRegister-popup');
 const iconClose = document.querySelector('.icon-close');
-// const loginRegisterButton = document.querySelector('.btn');
 
 loginLink.addEventListener('click', ()=> {
     wrapper.classList.add('active-login');

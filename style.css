@@ -1,16 +1,21 @@
-@font-face{
-  font-family: Davinci;
-  src: url(/Assets/Fonts/cm-davinci-fonts-modern-sans-3701241/Davinci.ttf);
+@font-face {
+  font-family: "Abnes";
+  src: url('Assets/Fonts/abnes/abnes.ttf');
 }
 
 @font-face {
-  font-family: Samsung;
-  src: url(Assets/Fonts/samsung-logo/@font-face/8915f60fd14a7688bcae6a457be3bd08.woff2);
+  font-family: "Samsung";
+  src: url('Assets/Fonts/samsung-logo/@font-face/8915f60fd14a7688bcae6a457be3bd08.woff2');
 }
 
 @font-face {
-  font-family: Abnes;
-  src: url(Assets/Fonts/abnes/abnes.ttf);
+  font-family: 'Davinci';
+  src: url('Assets/Fonts/davinci-webfont-kit/davinci-webfont.eot');
+  src: url('Assets/Fonts/davinci-webfont-kit/davinci-webfont.eot?#iefix') format('embedded-opentype'),
+       url('Assets/Fonts/davinci-webfont-kit/davinci-webfont.woff') format('woff'),
+       url('Assets/Fonts/davinci-webfont-kit/davinci-webfont.woff2') format('woff2'),
+       url('Assets/Fonts/davinci-webfont-kit/davinci-webfont.ttf') format('truetype'),
+       url('Assets/Fonts/davinci-webfont-kit/davinci-webfont.svg') format('svg');
 }
 
 * {
@@ -38,6 +43,8 @@ body {
 .bg-img-text-home {
   font-family: "Davinci", "sans-serif";
   font-size: 9vh;
+  font-weight: 600;
+  font-style: italic;
   display: flex;
   justify-content: center;
   padding-top: 17vh;
@@ -90,6 +97,40 @@ nav {
 
 .nav-elements:hover {
   color: #a69a85;
+  cursor: pointer;
+}
+
+.nav-element-welcome {
+  color: #000000;
+  font-size: 25px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: transform .3s;
+}
+
+.nav-element-welcome:hover {
+  color: #a69a85;
+  filter: drop-shadow(.4rem .4rem .9rem #000);
+  cursor: pointer;
+  transition: transform .3s;
+  transform: scale(1.1);
+}
+
+.nav-element-welcome:hover .dropdown{
+  display: block;
+  width: 100%;
+}
+
+.nav-element-welcome .in{
+  font-family: "Samsung", "sans-serif";
+  color: #ffffff;
+  font-weight: 400;
+  font-size: 70%;
+  display: flex;
+  padding: 8px;
+  text-decoration: none;
+  justify-content: center;
+  align-items: center;
 }
 
 .profile_icon {
@@ -126,13 +167,13 @@ nav {
 }
 
 .dropdown-li {
-  margin: 0 20px;
+  margin: 0 25px;
   transition: transform .3s;
 }
 
 .dropdown-li:hover {
   transition: transform .3s;
-  transform: scale(1.5);
+  transform: scale(1.3);
 }
 
 .dropdown a {
@@ -155,6 +196,7 @@ nav {
   justify-content: center; 
   align-items: center;
   position: relative;
+  margin-top: 3vh;
   margin-left: auto;
   margin-right: auto;
   width: 400px;
@@ -164,7 +206,6 @@ nav {
   border-radius: 20px;
   backdrop-filter: blur(20px) brightness(58%);
   z-index: 9998;
-  /* box-shadow: 0 0 30px rgba(0, 0, 0, .5); */
   overflow: hidden;
   transform: scale(0);
   transition: transform .5s ease, height .3s ease;
@@ -195,7 +236,7 @@ nav {
 
 .form-boxlogin .active-login{
   position: absolute;
-  transition: none;
+  transition: transform .28s ease;
   transform: translateX(0px);
 }
 
