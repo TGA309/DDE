@@ -28,7 +28,10 @@ body {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  background-color: #f5f5f5;
 }
+
+/* Navbar and Home section CSS */
 
 .bg-img-home {
   background-image: url('Assets/Images/home.png');
@@ -133,6 +136,28 @@ nav {
   align-items: center;
 }
 
+.nav-element-welcome .in-cat{
+  font-family: "Samsung", "sans-serif";
+  color: #ffffff;
+  font-weight: 400;
+  font-size: 70%;
+  display: flex;
+  padding: 8px;
+  text-decoration: none;
+  cursor: default;
+  justify-content: center;
+  align-items: center;
+}
+
+.dropdown {
+  display: none;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background-color: #333333;
+  z-index: 9999;
+}
+
 .profile_icon {
   margin: 0 20px;
   transition: transform .3s;
@@ -145,16 +170,23 @@ nav {
   transform: scale(1.5);
 }
 
-.dropdown {
-  display: none;
-  position: absolute;
-  top: 100%;
-  right: 0;
-  background-color: #333333;
-  z-index: 9999;
+.profile_icon:hover .dropdown {
+  display: block;
 }
 
-.profile_icon:hover .dropdown {
+.dropdown-li {
+  margin: 0 20px;
+}
+
+.dropdown-li:hover {
+  cursor: pointer;
+  filter: drop-shadow(.4rem .4rem .9rem #000);
+  transition: transform .3s;
+}
+
+.dropdown-li:hover .dropdown {
+  transition: transform .3s;
+  transform: scale(1.25);
   display: block;
 }
 
@@ -234,7 +266,7 @@ nav {
   transform: translateX(-400px);
 }
 
-.form-boxlogin .active-login{
+.form-boxlogin.active-login{
   position: absolute;
   transition: transform .28s ease;
   transform: translateX(0px);
@@ -271,7 +303,7 @@ nav {
 }
 
 .wrapper .icon-close:hover {
-  color: #dcd0ff;
+  color: #f5f5f5;
   transition: transform .3s;
 }
 
@@ -346,7 +378,7 @@ nav {
 }
 
 .btn:hover {
-  color: #dcd0ff;
+  color: #f5f5f5;
   transition: transform .3s;
 }
 
@@ -374,6 +406,151 @@ nav {
   text-decoration: underline;
 }
 
+
+/* Cars section CSS */
+
+.heading-cars {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 15vh;
+  font-family: "Davinci", "sans-serif";
+  font-size: 6vh;
+  font-weight: 800;
+  width: 100%;
+}
+
+.category {
+  margin: 20px auto;
+}
+
+.category-headings {
+  font-family: "Samsung", "sans-serif";
+  font-size: 2em;
+  text-align: center;
+}
+
+.car-tiles {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.car-tile {
+  width: 300px;
+  height: 330px;
+  margin: 80px;
+  padding: 10px;
+  text-align: center;
+  background-color: #f5f5f5;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+  transition: transform 0.2s ease-in-out;
+}
+
+.car-tile:hover {
+  transform: scale(1.05);
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.4);
+}
+
+.car-tile img {
+  width: 100%;
+  height: 60%;
+  object-fit: cover;
+  border-radius: 5px;
+}
+
+.car-tile h3 {
+  font-size: 18px;
+  margin-top: 10px;
+}
+
+
+/* Back To Top button CSS */
+
+.back-to-top {
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 69px;
+  height: 69px;
+  border: none;
+  border-radius: 15px;
+  background-color: #f5f5f5;
+  text-decoration: none;
+  overflow: hidden;
+  letter-spacing: 0.1em;
+  font-size: 1.1em;
+  transition: all 0.5s ease;
+}
+
+.back-to-top:hover {
+  width: 190px;
+  cursor: pointer;
+  background-color: #a69a85;
+  transition: all 0.5s ease;
+}
+
+.back-to-top img {
+  display: block;
+  width: 69px;
+  height: 69px;
+  object-fit: contain;
+}
+
+.back-to-top-text {
+  height: 2.2vh;
+  overflow: hidden;
+  transform: translateX(-10%);
+  transition: transform 0.5s ease;
+}
+
+.back-to-top:hover .back-to-top-text {
+  transform: translateX(0%);
+}
+
+
+/* Footer section CSS */
+
+footer {
+  background-color: #333333;
+  color: #ffffff;
+  font-size: 2vh;
+  padding: 50px 0;
+  width: 100%;
+  text-align: center;
+}
+
+footer h4 {
+  margin-top: 0;
+}
+
+footer p {
+  line-height: 1.5;
+}
+
+footer ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+footer ul li {
+  display: inline-block;
+  margin-right: 10px;
+}
+
+footer ul li:last-child {
+  margin-right: 0;
+}
+
+footer ul li a {
+  color: #ffffff;
+  text-decoration: none;
+}
+
+
 /* Custom Scrollbar */
 
 html::-webkit-scrollbar {
@@ -398,7 +575,7 @@ html::-webkit-scrollbar-thumb:hover {
   border-color: #aeaeae;
 }
 
-/* Scrollbar customisatin for Firefox and non-webkit based browsers */
+/* Scrollbar customisation for Firefox and non-webkit based browsers */
 html {
   scrollbar-width: thin;
   scrollbar-color: #a69a85 #000000;
