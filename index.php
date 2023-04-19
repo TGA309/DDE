@@ -27,36 +27,45 @@
 				<ul class="dropdown-ul">
 				<li class="dropdown-li"><a class="nav-elements" id="cars">Cars</a>
 					<div class="dropdown">
-					<?php  if (!isset($_SESSION['username'])) : ?>
-					<a class="nin">New Booking</a>
-					<?php
-					echo '<script type="text/javascript">
-					const nbnin = document.querySelector(".nin");
-					nbnin.addEventListener("click", function(e) {
-						e.preventDefault();
-						wrapper.classList.add("active-login");
-						wrapper.classList.add("active-loginpopup");
-						formBoxRegister.classList.add("inactive");
-						wrapper.classList.remove("active-register");
-						wrapper.classList.remove("active-registerpopup");
-						formBoxLogin.classList.remove("inactive");
+						<?php  if (!isset($_SESSION['username'])) : ?>
+						<a class="notloggedin">Check Car Availability</a>
+						<a class="notloggedin">New Reservation</a>
+						<a class="notloggedin">Update/Delete Reservation</a>
 
-						window.scrollTo({
-							top: 0,
-							behavior: "smooth"
+						<?php
+						echo '<script type="text/javascript">
+						const notloggedin = document.querySelectorAll(".notloggedin");
+						notloggedin.forEach(element => {
+							element.addEventListener("click", function(e) {
+								e.preventDefault();
+								wrapper.classList.add("active-login");
+								wrapper.classList.add("active-loginpopup");
+								formBoxRegister.classList.add("inactive");
+								wrapper.classList.remove("active-register");
+								wrapper.classList.remove("active-registerpopup");
+								formBoxLogin.classList.remove("inactive");
+
+								window.scrollTo({
+									top: 0,
+									behavior: "smooth"
+								});
+							});
 						});
-					});
-				  </script>';
-					?>
-					<?php endif ?>
+						</script>';
+						?>
+						<?php endif ?>
 
-					<?php  if (isset($_SESSION['username'])) : ?>
-					<a href="newbooking.php">New Booking</a>
-					<?php endif ?>
+						<?php  if (isset($_SESSION['username'])) : ?>
+						<a href="caravailability.php" target="_blank">Check Car Availability</a>
+						<a href="newreservation.php">New Reservation</a>
+						<a href="update_deletereservation.php">Update/Delete Reservation</a>
+						<?php endif ?>
 					</div>
 					
 				</li>
+
 				<li class="dropdown-li"><a class="nav-elements" id="aboutus">About Us</a></li>
+
 				<?php  if (!isset($_SESSION['username'])) : ?>
 				<li class="profile_icon">
 					<img src="Assets/Images/account.png"></img>
@@ -74,11 +83,11 @@
 						<a class="in-cat"> <?php echo $_SESSION['category'] ?> </a>
 
 						<?php if($_SESSION['category'] === 'Employee') : ?>
-						<a class="in"> All Bookings </a> </a>
+						<a class="in" href="allreservations.php" target="_blank"> All Reservations </a> </a>
 						<?php endif ?>
 
 						<?php if($_SESSION['category'] === 'Customer') : ?>
-						<a class="in"> My Bookings </a> </a>
+						<a class="in" href="myreservations.php" target="_blank"> My Reservations </a> </a>
 						<?php endif ?>
 
 						<a href="index.php?logout='1'" class="in"> Logout</a>
@@ -102,9 +111,18 @@
 				<div class="form-boxlogin">
 					<h2>Login</h2>
 					<form method="post" action="index.php">
-					<?php include('errorslogin.php'); ?>
+
+						<?php  if (count($errors_login) > 0) : ?>
+						<div class="error">
+							<?php foreach ($errors_login as $error_login) : ?>
+								<p><?php echo $error_login ?></p>
+							<?php endforeach ?>
+							<?php $errors_login = array();?>
+						</div>
+						<?php  endif ?>
+
 						<div class="input-box">
-							<span class="icon"><ion-icon name="mail-sharp"></ion-icon></span>
+							<span class="icon"><ion-icon name="person-sharp"></ion-icon></span>
 								<input type = "text" name="username" value="<?php echo $username; ?>" required>
 								<label>Username</label>
 						</div>
@@ -124,9 +142,18 @@
 					<h2>Registration</h2><br>
 					
 					<form method="post" action="index.php">
-					<?php include('errorsregister.php'); ?>
+
+						<?php  if (count($errors_register) > 0) : ?>
+						<div class="error">
+							<?php foreach ($errors_register as $error_register) : ?>
+								<p><?php echo $error_register ?></p>
+							<?php endforeach ?>
+							<?php $errors_register = array();?>
+						</div>
+						<?php  endif ?>
+						
 						<div class="input-box">
-							<input type = "text" name="name" value="<?php echo $name; ?>" required>
+							<input type = "text" name="name" required>
 							<label>Name</label>
 						</div>
 						<div class="input-box">

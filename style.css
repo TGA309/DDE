@@ -41,6 +41,7 @@ body {
   background-position: top 0% right 0%;
   background-repeat: no-repeat;
   z-index: 1;
+  overflow-x: hidden
 }
 
 .bg-img-text-home {
@@ -50,8 +51,24 @@ body {
   font-style: italic;
   display: flex;
   justify-content: center;
-  padding-top: 17vh;
+  padding-top: 18vh;
   z-index: 1;
+  transition: all 0.69s ease;
+}
+
+.bg-img-text-home.enlarge {
+  font-size: 12vh;
+  transform: scale(1.69);
+  transition: all 0.69s ease;
+}
+
+.bg-img-text-home.fade {
+  opacity: 0;
+}
+
+.fade {
+  opacity: 0;
+  transition: all 0.5s ease;
 }
 
 nav {
@@ -111,9 +128,15 @@ nav {
   transition: transform .3s;
 }
 
+.nav-element-welcome .dropdown{
+  position: absolute;
+  top: 100%;
+  right: 0;
+  filter: drop-shadow(.4rem .4rem .9rem #000);
+}
+
 .nav-element-welcome:hover {
   color: #a69a85;
-  filter: drop-shadow(.4rem .4rem .9rem #000);
   cursor: pointer;
   transition: transform .3s;
   transform: scale(1.1);
@@ -151,11 +174,12 @@ nav {
 
 .dropdown {
   display: none;
+  font-size: 1em;
   position: absolute;
   top: 100%;
-  right: 0;
   background-color: #333333;
   z-index: 9999;
+  filter: drop-shadow(.4rem .4rem .9rem #000);
 }
 
 .profile_icon {
@@ -180,13 +204,12 @@ nav {
 
 .dropdown-li:hover {
   cursor: pointer;
-  filter: drop-shadow(.4rem .4rem .9rem #000);
   transition: transform .3s;
 }
 
 .dropdown-li:hover .dropdown {
   transition: transform .3s;
-  transform: scale(1.25);
+  transform: scale(1.04);
   display: block;
 }
 
@@ -223,6 +246,14 @@ nav {
   transition: transform .3s;
 }
 
+.error {
+  color: #d6a551;
+}
+
+.error:hover {
+  color: #f5f5f5;
+}
+
 .wrapper {
   display: flex;
   justify-content: center; 
@@ -253,11 +284,6 @@ nav {
 
 .wrapper.active-registerpopup {
   transform: scale(1);
-}
-
-.form-box {
-  width: 100%;
-  margin: 10px;
 }
 
 .form-boxlogin.inactive {
@@ -306,7 +332,6 @@ nav {
   color: #f5f5f5;
   transition: transform .3s;
 }
-
 
 .form-boxlogin h2 {
   font-size: 2em;
@@ -465,6 +490,608 @@ nav {
   margin-top: 10px;
 }
 
+/* New Reservation & Update/Delete Page CSS */
+
+.new-update-delete-reservation-page-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #9c948c;
+  width: 100%;
+  z-index: 1;
+}
+
+
+/* Custom Form CSS */
+
+/* Custom Form 1 (New Booking) */
+
+#form1.customform {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 50px auto;
+  width: 90%;
+  max-width: 800px;
+  background: transparent;
+  border-radius: 20px;
+  backdrop-filter: blur(20px) brightness(58%);
+  height: 70px;
+  overflow: hidden;
+  transition: all 0.5s ease-out;
+}
+
+#form1.customform.expanded {
+  transition: all 0.5s ease-out;
+  overflow: hidden;
+  height: auto;
+}
+
+#form1.customform-h2 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.5rem;
+  color: #b9a47d;
+  margin-top: 380px;
+  margin-bottom: 30px;
+  cursor: pointer;
+  transition: all 0.5s ease-out;
+}
+
+#form1.customform-h2:hover {
+  color: #D0CBC4;
+}
+
+#form1.customform-h2.expanded{
+  transition: all 0.5s ease-out;
+  margin-top: 30px;
+}
+
+#form1.customform-h3 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  color: #a88d5d;
+  margin-bottom: 20px;
+  height: 10px;
+}
+
+#form1.input-box-customform {
+  visibility: hidden;
+  height: 0;
+  position: relative;
+  width: 100%;
+  margin-bottom: 35px;
+  height: 0;
+  opacity: 0;
+}
+
+#form1.input-box-customform.expanded{
+  visibility: visible;
+  height: auto;
+  opacity: 1;
+}
+
+#form1.input-box-customform label {
+  position: absolute;
+  top: 50%;
+  left: 15px;
+  transform: translateY(-50%);
+  font-size: 1.2rem;
+  color: #666;
+  font-weight: 500;
+  pointer-events: none;
+  transition: .3s;
+}
+
+#form1.input-box-customform input, #form1.input-box-customform select {
+  width: 100%;
+  padding: 20px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 1.2rem;
+  color: #333;
+  font-weight: 500;
+}
+
+#form1.input-box-customform input:focus, #form1.input-box-customform select:focus {
+  outline: none;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  border-color: #a88d5d;
+}
+
+#form1.input-box-customform input:focus~label, #form1.input-box-customform input:not(:placeholder-shown)~label, #form1.input-box-customform select:focus~label, #form1.input-box-customform select:not(:placeholder-shown)~label {
+  top: 10px;
+  font-size: 1.2rem;
+  color: #a88d5d;
+}
+
+#form1.btncontainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 50px;
+  transform: scale(0);
+  opacity: 0;
+}
+
+#form1.btncontainer.expanded {
+  opacity: 1;
+  transition: all 0.5s ease-out;
+  transform: scale(1);
+}
+
+/* Custom Form 2 (Add Booking) */
+
+#form2.customform {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 50px auto;
+  width: 90%;
+  max-width: 800px;
+  background: transparent;
+  border-radius: 20px;
+  backdrop-filter: blur(20px) brightness(58%);
+  height: 70px;
+  overflow: hidden;
+  transition: all 0.5s ease-out;
+}
+
+#form2.customform-h2:hover {
+  color: #D0CBC4;
+}
+
+#form2.customform.expanded {
+  transition: all 0.5s ease-out;
+  overflow: hidden;
+  height: auto;
+}
+
+#form2.customform-h2 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.0rem;
+  color: #a88d5d;
+  margin-top: 140px;
+  cursor: pointer;
+  transition: all 0.5s ease-out;
+}
+
+#form2.customform-h2.expanded{
+  transition: all 0.5s ease-out;
+  margin-top: 30px;
+}
+
+#form2.input-box-customform {
+  visibility: hidden;
+  height: 0;
+  position: relative;
+  width: 100%;
+  margin-bottom: 35px;
+  height: 0;
+  opacity: 0;
+}
+
+#form2.input-box-customform.expanded{
+  visibility: visible;
+  margin-top: 10px;
+  height: auto;
+  opacity: 1;
+}
+
+#form2.input-box-customform label {
+  position: absolute;
+  top: 50%;
+  left: 15px;
+  transform: translateY(-50%);
+  font-size: 1.2rem;
+  color: #666;
+  font-weight: 500;
+  pointer-events: none;
+  transition: .3s;
+}
+
+#form2.input-box-customform input, #form2.input-box-customform select {
+  width: 100%;
+  padding: 20px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 1.2rem;
+  color: #333;
+  font-weight: 500;
+}
+
+#form2.input-box-customform input:focus, #form2.input-box-customform select:focus {
+  outline: none;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  border-color: #a88d5d;
+}
+
+#form2.input-box-customform input:focus~label, #form2.input-box-customform input:not(:placeholder-shown)~label, #form2.input-box-customform select:focus~label, #form2.input-box-customform select:not(:placeholder-shown)~label {
+  top: 10px;
+  font-size: 1.2rem;
+  color: #a88d5d;
+}
+
+#form2.btncontainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 50px;
+  transform: scale(0);
+  opacity: 0;
+}
+
+#form2.btncontainer.expanded {
+  opacity: 1;
+  transition: all 0.5s ease-out;
+  transform: scale(1);
+}
+
+/* Custom Form 3 (Update Booking) */
+
+#form3.customform {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 50px auto;
+  width: 90%;
+  max-width: 800px;
+  background: transparent;
+  border-radius: 20px;
+  backdrop-filter: blur(20px) brightness(58%);
+  height: 70px;
+  overflow: hidden;
+  transition: all 0.5s ease-out;
+}
+
+#form1.customform-h2:hover {
+  color: #D0CBC4;
+}
+
+#form3.customform-h2:hover {
+  color: #D0CBC4;
+}
+
+#form3.customform.expanded {
+  transition: all 0.5s ease-out;
+  overflow: hidden;
+  height: auto;
+}
+
+#form3.customform-h2 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.5rem;
+  color: #a88d5d;
+  margin-top: 380px;
+  margin-bottom: 30px;
+  cursor: pointer;
+  transition: all 0.5s ease-out;
+}
+
+#form3.customform-h2.expanded{
+  transition: all 0.5s ease-out;
+  margin-top: 30px;
+}
+
+#form3.customform-h3 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  color: #a88d5d;
+  margin-bottom: 20px;
+  height: 10px;
+}
+
+#form3.input-box-customform {
+  visibility: hidden;
+  height: 0;
+  position: relative;
+  width: 100%;
+  margin-bottom: 35px;
+  height: 0;
+  opacity: 0;
+}
+
+#form3.input-box-customform.expanded{
+  visibility: visible;
+  height: auto;
+  opacity: 1;
+}
+
+#form3.input-box-customform label {
+  position: absolute;
+  top: 50%;
+  left: 15px;
+  transform: translateY(-50%);
+  font-size: 1.2rem;
+  color: #666;
+  font-weight: 500;
+  pointer-events: none;
+  transition: .3s;
+}
+
+#form3.input-box-customform input, #form3.input-box-customform select {
+  width: 100%;
+  padding: 20px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 1.2rem;
+  color: #333;
+  font-weight: 500;
+}
+
+#form3.input-box-customform input:focus, #form3.input-box-customform select:focus {
+  outline: none;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  border-color: #a88d5d;
+}
+
+#form3.input-box-customform input:focus~label, #form3.input-box-customform input:not(:placeholder-shown)~label, #form3.input-box-customform select:focus~label, #form3.input-box-customform select:not(:placeholder-shown)~label {
+  top: 10px;
+  font-size: 1.2rem;
+  color: #a88d5d;
+}
+
+#form3.btncontainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 50px;
+  transform: scale(0);
+  opacity: 0;
+}
+
+#form3.btncontainer.expanded {
+  opacity: 1;
+  transition: all 0.5s ease-out;
+  transform: scale(1);
+}
+
+/* Custom Form 4 (Delete Booking) */
+
+#form4.customform {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 50px auto;
+  width: 90%;
+  max-width: 800px;
+  background: transparent;
+  border-radius: 20px;
+  backdrop-filter: blur(20px) brightness(58%);
+  height: 70px;
+  overflow: hidden;
+  transition: all 0.5s ease-out;
+}
+
+#form4.customform-h2:hover {
+  color: #D0CBC4;
+}
+
+#form4.customform.expanded {
+  transition: all 0.5s ease-out;
+  overflow: hidden;
+  height: auto;
+}
+
+#form4.customform-h2 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.2rem;
+  color: #a88d5d;
+  margin-top: 140px;
+  cursor: pointer;
+  transition: all 0.5s ease-out;
+}
+
+#form4.customform-h2.expanded{
+  transition: all 0.5s ease-out;
+  margin-top: 30px;
+}
+
+#form4.input-box-customform {
+  visibility: hidden;
+  height: 0;
+  position: relative;
+  width: 100%;
+  margin-bottom: 35px;
+  height: 0;
+  opacity: 0;
+}
+
+#form4.input-box-customform.expanded{
+  visibility: visible;
+  margin-top: 10px;
+  height: auto;
+  opacity: 1;
+}
+
+#form4.input-box-customform label {
+  position: absolute;
+  top: 50%;
+  left: 15px;
+  transform: translateY(-50%);
+  font-size: 1.2rem;
+  color: #666;
+  font-weight: 500;
+  pointer-events: none;
+  transition: .3s;
+}
+
+#form4.input-box-customform input, #form4.input-box-customform select {
+  width: 100%;
+  padding: 20px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 1.2rem;
+  color: #333;
+  font-weight: 500;
+}
+
+#form4.input-box-customform input:focus, #form4.input-box-customform select:focus {
+  outline: none;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  border-color: #a88d5d;
+}
+
+#form4.input-box-customform input:focus~label, #form4.input-box-customform input:not(:placeholder-shown)~label, #form4.input-box-customform select:focus~label, #form4.input-box-customform select:not(:placeholder-shown)~label {
+  top: 10px;
+  font-size: 1.2rem;
+  color: #a88d5d;
+}
+
+#form4.btncontainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 50px;
+  transform: scale(0);
+  opacity: 0;
+}
+
+#form4.btncontainer.expanded {
+  opacity: 1;
+  transition: all 0.5s ease-out;
+  transform: scale(1);
+}
+
+/* Common CSS for all the form buttons */
+.btnform {
+  width: 100%;
+  max-width: 300px;
+  height: 60px;
+  background-color: #a88d5d;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 1.5rem;
+  color: #fff;
+  font-weight: 500;
+  transition: .3s;
+}
+
+.btnform:hover {
+  background-color: #8a6c3f;
+}
+
+/* CSS for Car Availability and Reservation Tables*/
+
+.wrapper-customtable {
+  font-family: Arial, sans-serif;
+  width: 80vw;
+  margin: auto;
+  background: transparent;
+  backdrop-filter: blur(20px);
+  transition: all 0.8s ease;
+}
+
+.wrapper-customtable-h2 {
+  background-color: #333;
+  color: #a69a85;
+  padding: 10px;
+  text-align: center;
+}
+
+.wrapper-customtable-h2:hover {
+  color: #f5f5f5;
+  cursor: pointer;
+}
+
+.selector-wrapper-customtable {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.selector-wrapper-customtable label {
+  margin-right: 10px;
+}
+
+.selector-wrapper-customtable select {
+  width: 250px;
+  padding: 5px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.selector-wrapper-customtable input[type="submit"] {
+  background-color: #333;
+  color: #a69a85;
+  border-radius: 5px;
+  border: none;
+  padding: 8px 16px;
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+.selector-wrapper-customtable input[type="submit"]:hover {
+  color: #f5f5f5;
+}
+
+.customtable {
+  border-collapse: collapse;
+  margin-top: 20px;
+  width: 100%;
+}
+
+.customtable-btn {
+  background-color: #333;
+  color: #a69a85;
+  border-radius: 5px;
+  border: none;
+  padding: 8px 16px;
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+.customtable-btn:hover{
+  color: #f5f5f5;
+}
+
+.customtable th {
+  background-color: #333;
+  color: #a69a85;
+  font-weight: normal;
+  text-align: left;
+  padding: 8px;
+  text-align: center;
+}
+
+.customtable th:hover {
+  color: #f5f5f5;
+  cursor: pointer;
+}
+
+.customtable td {
+  color: #333;
+  padding: 8px;
+  border-bottom: 1px solid #000;
+  text-align: center;
+}
+
+.customtable td:hover {
+  color: #f5f5f5;
+  cursor: pointer;
+}
+
+.customtable tr:hover {
+  background-color: #a69a85;
+}
 
 /* Back To Top button CSS */
 
@@ -477,7 +1104,7 @@ nav {
   height: 69px;
   border: none;
   border-radius: 15px;
-  background-color: #f5f5f5;
+  background:transparent;
   text-decoration: none;
   overflow: hidden;
   letter-spacing: 0.1em;
@@ -488,7 +1115,6 @@ nav {
 .back-to-top:hover {
   width: 190px;
   cursor: pointer;
-  background-color: #a69a85;
   transition: all 0.5s ease;
 }
 
@@ -549,7 +1175,6 @@ footer ul li a {
   color: #ffffff;
   text-decoration: none;
 }
-
 
 /* Custom Scrollbar */
 
