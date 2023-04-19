@@ -106,9 +106,9 @@
                 if(mysqli_num_rows($result) > 0) {
                     $serial_no = 1;
                     echo '<table class="customtable">
-                        <tr><th>Serial No.</th><th>Car Name</th><th>Car Sr. No.</th><th>User Category</th><th>Reservation ID</th><th>Pickup Date</th><th>Return Date</th><th>No. of Days</th><th>Rate Per Day</th><th>Total Cost</th><th>Update/Delete Reservation</th></tr>';
+                        <tr><th>Serial No.</th><th>Car Name</th><th>Car Sr. No.</th><th>User Category</th><th>Username</th><th>Reservation ID</th><th>Pickup Date</th><th>Return Date</th><th>No. of Days</th><th>Rate Per Day</th><th>Total Cost</th><th>Update/Delete Reservation</th></tr>';
                         while ($row = mysqli_fetch_assoc($result)) {
-                            echo '<tr><td>' . $serial_no . '</td><td>' . $row['car_name'] . '</td><td>' . $row['car_sr_no'] . '</td><td>' . $row['category'] . '</td><td>' . $row['reservation_id'] . '</td><td>' . $row['pickup_date'] . '</td><td>' . $row['return_date'] . '</td><td>' . $row['no_of_days'] . '</td><td>' . intval($row['total_cost']) / intval($row['no_of_days']) . '</td><td>' . $row['total_cost'] . '</td><td><button class="customtable-btn">Update/Delete Reservation</button></td></tr>';
+                            echo '<tr><td>' . $serial_no . '</td><td>' . $row['car_name'] . '</td><td>' . $row['car_sr_no'] . '</td><td>' . $row['category'] . '</td><td>' . $row['username'] . '</td><td>' . $row['reservation_id'] . '</td><td>' . $row['pickup_date'] . '</td><td>' . $row['return_date'] . '</td><td>' . $row['no_of_days'] . '</td><td>' . intval($row['total_cost']) / intval($row['no_of_days']) . '</td><td>' . $row['total_cost'] . '</td><td><button class="customtable-btn">Update/Delete Reservation</button></td></tr>';
                             $serial_no++;
                         }
                     echo '</table>';
